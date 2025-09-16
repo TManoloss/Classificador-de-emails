@@ -17,7 +17,10 @@ class Settings:
     GEMINI_MODEL: str = "gemini-1.5-flash"
     
     # CORS Settings
-    CORS_ORIGINS: list = ["https://classificador-de-emails-seven.vercel.app/"]  # Em produção, restringir ao domínio do frontend
+    CORS_ORIGINS: list = ["https://classificador-de-emails-seven.vercel.app",
+        "http://localhost:5500",
+        "http://127.0.0.1:5500",
+        "http://localhost:3000",]  
     CORS_METHODS: list = ["*"]
     CORS_HEADERS: list = ["*"]
     CORS_CREDENTIALS: bool = True
