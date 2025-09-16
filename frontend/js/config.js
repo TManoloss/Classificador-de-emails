@@ -3,7 +3,7 @@
  */
 // Configurações base
 const isProduction = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
-const apiBaseUrl = isProduction ? '' : 'http://127.0.0.1:8000';
+const apiBaseUrl = isProduction ? 'https://classificador-de-emails-hxkx.onrender.com' : 'http://127.0.0.1:8000';
 
 export const CONFIG = {
   API_URL: `${apiBaseUrl}/api/classify`,
