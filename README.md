@@ -1,79 +1,106 @@
-# AutoU - Classificador de Emails
+# AutoU - Sistema de Análise de Documentos
 
-Sistema de classificação automática de emails usando Inteligência Artificial (Gemini AI) para identificar se um email é produtivo ou improdutivo, além de sugerir prioridades e respostas automáticas.
+Bem-vindo ao AutoU, uma aplicação web para análise e processamento de documentos utilizando IA.
 
-## Estrutura do Projeto
+## 📋 Pré-requisitos
+
+- Python 3.8+
+- Node.js 14+ (para o frontend)
+- pip (gerenciador de pacotes Python)
+- npm ou yarn (gerenciador de pacotes Node.js)
+
+## 🚀 Configuração do Ambiente
+
+### 1. Clonar o repositório
+
+```bash
+git clone https://github.com/TManoloss/Classificador-de-emails.git
+cd AutoU/Novo
+```
+
+### 2. Configurar o Backend
+
+1. Crie e ative um ambiente virtual:
+   ```bash
+   # Linux/MacOS
+   python -m venv venv
+   source venv/bin/activate
+
+   # Windows
+   python -m venv venv
+   .\venv\Scripts\activate
+   ```
+
+2. Instale as dependências do backend:
+   ```bash
+   cd backend
+   pip install -r requirements.txt
+   ```
+
+3. Configure as variáveis de ambiente:
+   Crie um arquivo `.env` na pasta `backend` com as seguintes variáveis:
+   ```
+   GEMINI_API_KEY=sua_chave_aqui
+   ```
+
+
+## 🏃‍♂️ Executando a Aplicação
+
+### Backend
+
+Na pasta `backend`, execute:
+```bash
+uvicorn main:app --reload
+```
+O servidor estará disponível em `http://localhost:8000`
+
+### Frontend
+
+Na pasta `frontend`, você pode usar um servidor simples do Python para servir os arquivos estáticos:
+```bash
+# Python 3
+python -m http.server 3000
+```
+
+Ou use o Live Server do VS Code:
+1. Instale a extensão "Live Server"
+2. Clique com o botão direito em `index.html` e selecione "Open with Live Server"
+
+A aplicação estará disponível em `http://localhost:3000`
+
+## 🛠 Tecnologias Utilizadas
+
+### Backend
+- Python 3.8+
+- FastAPI
+- Uvicorn
+- Google Generative AI
+- Outras bibliotecas listadas em `requirements.txt`
+
+### Frontend
+- HTML5
+- CSS3
+- JavaScript Vanilla
+
+## 📂 Estrutura do Projeto
 
 ```
 .
-├── backend/           # API em FastAPI
-├── frontend/          # Interface web em HTML/JS puro
+├── backend/           # Código-fonte do backend
+│   ├── app/           # Módulos da aplicação
+│   ├── main.py        # Ponto de entrada da aplicação
+│   └── requirements.txt
+├── frontend/          # Código-fonte do frontend
+│   ├── assets/        # Arquivos estáticos
+│   ├── css/           # Folhas de estilo
+│   ├── js/            # Código JavaScript
+│   └── index.html     # Página principal
 └── README.md          # Este arquivo
 ```
 
-## Como Fazer o Deploy
+## 📄 Licença
 
-### 1. Backend (API)
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-Siga as instruções em [backend/README.md](backend/README.md) para fazer o deploy da API.
 
-**Serviços recomendados:**
-- [Render.com](https://render.com/)
-- [Railway.app](https://railway.app/)
-- [Heroku](https://www.heroku.com/)
 
-### 2. Frontend (Interface Web)
-
-Siga as instruções em [frontend/README.md](frontend/README.md) para fazer o deploy do frontend.
-
-**Serviços recomendados:**
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
-- [GitHub Pages](https://pages.github.com/)
-
-### 3. Configuração Pós-Deploy
-
-1. Após fazer o deploy do backend, anote a URL base da API (ex: `https://seu-backend.onrender.com`)
-2. No frontend, atualize a variável `apiBaseUrl` no arquivo `frontend/js/config.js` com a URL do seu backend
-3. Faça o deploy do frontend com a configuração atualizada
-
-## Variáveis de Ambiente
-
-### Backend
-
-| Variável | Obrigatória | Descrição |
-|----------|-------------|-----------|
-| GEMINI_API_KEY | Sim | Chave de API do Google Gemini |
-| PORT | Não | Porta do servidor (geralmente definida pelo provedor) |
-
-### Frontend
-
-Por padrão, o frontend tenta se conectar ao backend no mesmo domínio. Se o backend estiver em um domínio diferente, atualize a variável `apiBaseUrl` em `frontend/js/config.js`.
-
-## Desenvolvimento Local
-
-### Backend
-
-```bash
-cd backend
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-# ou
-.\venv\Scripts\activate  # Windows
-
-pip install -r requirements.txt
-uvicorn main:app --reload
-```
-
-### Frontend
-
-```bash
-cd frontend
-npx serve -s .
-```
-
-Acesse `http://localhost:3000` no navegador.
-
-## Licença
-
-Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
