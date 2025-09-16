@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teste de Estilos</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/utilities.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      padding: 2rem;
+      background-color: var(--gray-50);
+      color: var(--gray-900);
+    }
+    .test-box {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-6);
+      margin-bottom: var(--spacing-6);
+      box-shadow: var(--shadow-sm);
+    }
+    .test-button {
+      background: var(--primary-500);
+      color: var(--white);
+      border: none;
+      padding: var(--spacing-3) var(--spacing-6);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .test-button:hover {
+      background: var(--primary-600);
+      transform: translateY(-1px);
+    }
+  </style>
+</head>
+<body>
+  <div class="test-box">
+    <h1>Teste de Estilos</h1>
+    <p>Este é um teste para verificar se os estilos estão sendo aplicados corretamente.</p>
+    <button class="test-button">Botão de Teste</button>
+  </div>
+  
+  <div class="test-box">
+    <h2>Cores do Tema</h2>
+    <div style="display: flex; gap: 1rem; margin: 1rem 0;">
+      <div style="width: 50px; height: 50px; background: var(--primary-500); border-radius: 8px;"></div>
+      <div style="width: 50px; height: 50px; background: var(--success-color); border-radius: 8px;"></div>
+      <div style="width: 50px; height: 50px; background: var(--warning-color); border-radius: 8px;"></div>
+      <div style="width: 50px; height: 50px; background: var(--error-color); border-radius: 8px;"></div>
+    </div>
+  </div>
+  
+  <div class="test-box">
+    <h2>Tipografia</h2>
+    <p style="font-size: var(--font-size-sm);">Texto pequeno (sm)</p>
+    <p style="font-size: var(--font-size-base);">Texto normal (base)</p>
+    <p style="font-size: var(--font-size-lg);">Texto grande (lg)</p>
+    <p style="font-size: var(--font-size-xl);">Texto extra grande (xl)</p>
+  </div>
+  
+  <script>
+    // Verifica se as variáveis CSS estão disponíveis
+    function checkCssVariables() {
+      const rootStyles = getComputedStyle(document.documentElement);
+      const testVariables = [
+        '--primary-500',
+        '--gray-100',
+        '--font-sans',
+        '--spacing-4',
+        '--radius-md'
+      ];
+      
+      console.log('=== Variáveis CSS ===');
+      testVariables.forEach(varName => {
+        try {
+          const value = rootStyles.getPropertyValue(varName).trim();
+          console.log(`${varName}: ${value ? '✅ ' + value : '❌ Não definida'}`);
+        } catch (e) {
+          console.log(`${varName}: ❌ Erro ao acessar`);
+        }
+      });
+    }
+    
+    // Verifica estilos aplicados ao body
+    function checkBodyStyles() {
+      const bodyStyles = getComputedStyle(document.body);
+      console.log('\n=== Estilos do Body ===');
+      console.log('Fonte:', bodyStyles.fontFamily);
+      console.log('Cor do texto:', bodyStyles.color);
+      console.log('Cor de fundo:', bodyStyles.backgroundColor);
+    }
+    
+    // Executa as verificações
+    setTimeout(() => {
+      checkCssVariables();
+      checkBodyStyles();
+    }, 500);
+  </script>
+</body>
+</html>

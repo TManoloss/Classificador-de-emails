@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teste - Validação de Emails</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Carrega CSS individuais na ordem correta -->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/utilities.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="header-icon">
+          <i class="fas fa-robot"></i>
+        </div>
+        <h1>Teste - Validação de Emails</h1>
+        <p>Testando diferentes tamanhos de texto e validações</p>
+      </header>
+
+      <main class="content">
+        <div class="form-group">
+          <label class="form-label">
+            <i class="fas fa-edit"></i>
+            Teste de validação:
+          </label>
+          <div class="textarea-container">
+            <textarea
+              id="test-textarea"
+              class="form-textarea"
+              placeholder="Digite um email de teste aqui..."
+              rows="6"
+            ></textarea>
+            <div class="char-counter">
+              <span id="char-count">0</span> caracteres
+            </div>
+          </div>
+        </div>
+
+        <!-- Botões de teste -->
+        <div
+          style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap"
+        >
+          <button
+            type="button"
+            class="btn-primary"
+            id="test-empty"
+            style="width: auto; padding: 0.75rem 1.5rem"
+          >
+            <i class="fas fa-times"></i>
+            Teste Vazio
+          </button>
+
+          <button
+            type="button"
+            class="btn-primary"
+            id="test-short"
+            style="width: auto; padding: 0.75rem 1.5rem"
+          >
+            <i class="fas fa-exclamation"></i>
+            Teste Curto (5 chars)
+          </button>
+
+          <button
+            type="button"
+            class="btn-primary"
+            id="test-medium"
+            style="width: auto; padding: 0.75rem 1.5rem"
+          >
+            <i class="fas fa-check"></i>
+            Teste Médio (50 chars)
+          </button>
+
+          <button
+            type="button"
+            class="btn-primary"
+            id="test-long"
+            style="width: auto; padding: 0.75rem 1.5rem"
+          >
+            <i class="fas fa-check-double"></i>
+            Teste Longo (200 chars)
+          </button>
+        </div>
+
+        <!-- Resultado do teste -->
+        <div
+          id="test-result"
+          class="result-container"
+          style="display: none; margin-top: 2rem"
+        >
+          <div class="result-content">
+            <h3 id="result-title">Resultado do Teste</h3>
+            <p id="result-message">Mensagem aqui</p>
+          </div>
+        </div>
+
+        <!-- Exemplos de texto -->
+        <div style="margin-top: 3rem">
+          <h3>Exemplos para testar:</h3>
+          <div style="display: grid; gap: 1rem; margin-top: 1rem">
+            <div
+              style="
+                padding: 1rem;
+                background: var(--gray-50);
+                border-radius: var(--radius-lg);
+              "
+            >
+              <strong>Texto muito curto (5 caracteres):</strong><br />
+              <code>"Olá"</code>
+              <button
+                onclick="setText('Olá')"
+                style="
+                  margin-left: 1rem;
+                  padding: 0.25rem 0.5rem;
+                  background: var(--primary-500);
+                  color: white;
+                  border: none;
+                  border-radius: 4px;
+                  cursor: pointer;
+                "
+              >
+                Usar
+              </button>
+            </div>
+
+            <div
+              style="
+                padding: 1rem;
+                background: var(--gray-50);
+                border-radius: var(--radius-lg);
+              "
+            >
+              <strong>Texto curto mas válido (50+ caracteres):</strong><br />
+              <code
+                >"Olá, preciso de uma resposta urgente sobre o projeto."</code
+              >
+              <button
+                onclick="setText('Olá, preciso de uma resposta urgente sobre o projeto.')"
+                style="
+                  margin-left: 1rem;
+                  padding: 0.25rem 0.5rem;
+                  background: var(--primary-500);
+                  color: white;
+                  border: none;
+                  border-radius: 4px;
+                  cursor: pointer;
+                "
+              >
+                Usar
+              </button>
+            </div>
+
+            <div
+              style="
+                padding: 1rem;
+                background: var(--gray-50);
+                border-radius: var(--radius-lg);
+              "
+            >
+              <strong>Email completo (200+ caracteres):</strong><br />
+              <code
+                >"Prezado João, espero que esteja bem. Gostaria de agendar uma
+                reunião para discutir os próximos passos do projeto de
+                desenvolvimento. Podemos marcar para próxima semana? Aguardo sua
+                resposta. Atenciosamente, Maria."</code
+              >
+              <button
+                onclick="setText('Prezado João, espero que esteja bem. Gostaria de agendar uma reunião para discutir os próximos passos do projeto de desenvolvimento. Podemos marcar para próxima semana? Aguardo sua resposta. Atenciosamente, Maria.')"
+                style="
+                  margin-left: 1rem;
+                  padding: 0.25rem 0.5rem;
+                  background: var(--primary-500);
+                  color: white;
+                  border: none;
+                  border-radius: 4px;
+                  cursor: pointer;
+                "
+              >
+                Usar
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script type="module">
+      import { Utils } from "./js/utils.js";
+
+      const textarea = document.getElementById("test-textarea");
+      const charCount = document.getElementById("char-count");
+      const resultDiv = document.getElementById("test-result");
+      const resultTitle = document.getElementById("result-title");
+      const resultMessage = document.getElementById("result-message");
+
+      // Função para definir texto
+      window.setText = function (text) {
+        textarea.value = text;
+        updateCharCount();
+        testValidation();
+      };
+
+      // Atualizar contador de caracteres
+      function updateCharCount() {
+        const count = textarea.value.length;
+        charCount.textContent = count;
+
+        // Colorir baseado no tamanho
+        charCount.className = "char-counter";
+        if (count < 10) {
+          charCount.classList.add("text-red-600");
+        } else if (count < 50) {
+          charCount.classList.add("text-yellow-500");
+        } else {
+          charCount.classList.add("text-green-600");
+        }
+      }
+
+      // Testar validação
+      function testValidation() {
+        const text = textarea.value.trim();
+        const validation = Utils.validateEmail(text, null);
+
+        resultDiv.style.display = "block";
+
+        if (validation.valid) {
+          resultTitle.textContent = "✅ Validação Passou";
+          resultTitle.className = "text-green-600";
+          resultMessage.textContent = "O texto é válido para classificação!";
+          resultDiv.querySelector(".result-content").className =
+            "result-content result-success";
+        } else {
+          resultTitle.textContent = "❌ Validação Falhou";
+          resultTitle.className = "text-red-600";
+          resultMessage.textContent = validation.message;
+          resultDiv.querySelector(".result-content").className =
+            "result-content result-error";
+        }
+      }
+
+      // Event listeners
+      textarea.addEventListener("input", function () {
+        updateCharCount();
+        testValidation();
+      });
+
+      // Botões de teste
+      document.getElementById("test-empty").addEventListener("click", () => {
+        setText("");
+      });
+
+      document.getElementById("test-short").addEventListener("click", () => {
+        setText("Olá");
+      });
+
+      document.getElementById("test-medium").addEventListener("click", () => {
+        setText("Olá, preciso de uma resposta urgente sobre o projeto.");
+      });
+
+      document.getElementById("test-long").addEventListener("click", () => {
+        setText(
+          "Prezado João, espero que esteja bem. Gostaria de agendar uma reunião para discutir os próximos passos do projeto de desenvolvimento. Podemos marcar para próxima semana? Aguardo sua resposta. Atenciosamente, Maria."
+        );
+      });
+
+      // Inicializar
+      updateCharCount();
+      testValidation();
+
+      console.log("✅ Teste de validação carregado");
+    </script>
+  </body>
+</html>

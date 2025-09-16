@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teste - Botão Classificar Email</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Carrega CSS individuais na ordem correta -->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/utilities.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="header-icon">
+          <i class="fas fa-robot"></i>
+        </div>
+        <h1>Teste - Botão Classificar Email</h1>
+        <p>Verificando se o botão está estilizado corretamente</p>
+      </header>
+
+      <main class="content">
+        <div class="form-group">
+          <label class="form-label">
+            <i class="fas fa-edit"></i>
+            Teste de texto:
+          </label>
+          <div class="textarea-container">
+            <textarea
+              class="form-textarea"
+              placeholder="Digite um email de teste aqui..."
+              rows="6"
+            >
+Olá, preciso de uma resposta urgente sobre o projeto.</textarea
+            >
+            <div class="char-counter"><span>58</span> caracteres</div>
+          </div>
+        </div>
+
+        <!-- Botão que estava com problema -->
+        <button type="submit" class="btn-primary" id="submit-btn">
+          <span class="btn-text">Classificar Email</span>
+          <span class="btn-icon">
+            <i class="fas fa-paper-plane"></i>
+          </span>
+        </button>
+
+        <!-- Botões de teste adicionais -->
+        <div style="margin-top: 2rem">
+          <h3>Outros botões para comparação:</h3>
+
+          <button
+            class="btn btn-primary"
+            style="margin-bottom: 1rem; width: auto; padding: 0.75rem 1.5rem"
+          >
+            <i class="fas fa-check"></i>
+            Botão com classe .btn + .btn-primary
+          </button>
+
+          <br />
+
+          <button
+            class="btn-primary"
+            style="width: auto; padding: 0.75rem 1.5rem"
+          >
+            <i class="fas fa-check"></i>
+            Botão apenas com .btn-primary
+          </button>
+        </div>
+
+        <!-- Resultado do teste -->
+        <div
+          id="test-result"
+          class="result-container"
+          style="display: none; margin-top: 2rem"
+        >
+          <div class="result-content result-success">
+            <h3>✅ Botão funcionando!</h3>
+            <p>O botão está estilizado corretamente com:</p>
+            <ul>
+              <li>✅ Background gradient</li>
+              <li>✅ Cores e tipografia</li>
+              <li>✅ Padding e espaçamento</li>
+              <li>✅ Hover effects</li>
+              <li>✅ Ícones e texto</li>
+              <li>✅ Responsividade</li>
+            </ul>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      // Teste do botão
+      document
+        .getElementById("submit-btn")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          console.log("✅ Botão funcionando!");
+
+          const resultDiv = document.getElementById("test-result");
+          resultDiv.style.display = "block";
+          resultDiv.innerHTML = `
+          <div class="result-content result-success">
+            <h3>✅ Botão funcionando!</h3>
+            <p>O botão está estilizado corretamente com:</p>
+            <ul>
+              <li>✅ Background gradient</li>
+              <li>✅ Cores e tipografia</li>
+              <li>✅ Padding e espaçamento</li>
+              <li>✅ Hover effects</li>
+              <li>✅ Ícones e texto</li>
+              <li>✅ Responsividade</li>
+            </ul>
+          </div>
+        `;
+        });
+
+      console.log("✅ Teste do botão carregado");
+    </script>
+  </body>
+</html>

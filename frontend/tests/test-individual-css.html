@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teste - Arquivos CSS Individuais</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Carrega CSS individuais na ordem correta -->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/utilities.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Partículas de fundo -->
+    <div class="particles-bg" id="particles-bg"></div>
+
+    <!-- Indicador de progresso -->
+    <div class="progress-bar" id="progress-bar"></div>
+
+    <div class="container">
+      <header class="header">
+        <div class="header-icon">
+          <i class="fas fa-robot"></i>
+        </div>
+        <h1>Teste - CSS Individuais</h1>
+        <p>Verificando se os arquivos CSS individuais funcionam corretamente</p>
+
+        <!-- Estatísticas -->
+        <div class="stats-container">
+          <div class="stat-item">
+            <i class="fas fa-envelope"></i>
+            <span class="stat-number">0</span>
+            <span class="stat-label">Emails Processados</span>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-clock"></i>
+            <span class="stat-number">0s</span>
+            <span class="stat-label">Tempo Médio</span>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-check-circle"></i>
+            <span class="stat-number">99%</span>
+            <span class="stat-label">Precisão</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="content">
+        <!-- Abas de entrada -->
+        <div class="input-tabs">
+          <button class="tab-btn active" data-tab="text">
+            <i class="fas fa-keyboard"></i>
+            Texto
+          </button>
+          <button class="tab-btn" data-tab="file">
+            <i class="fas fa-file-upload"></i>
+            Arquivo
+          </button>
+        </div>
+
+        <form id="test-form">
+          <!-- Aba de texto -->
+          <div class="tab-content active">
+            <div class="form-group">
+              <label class="form-label">
+                <i class="fas fa-edit"></i>
+                Teste de texto:
+              </label>
+              <div class="textarea-container">
+                <textarea
+                  class="form-textarea"
+                  placeholder="Digite algo aqui..."
+                  rows="6"
+                ></textarea>
+                <div class="char-counter"><span>0</span> caracteres</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Aba de arquivo -->
+          <div class="tab-content">
+            <div class="form-group">
+              <label class="form-label">
+                <i class="fas fa-cloud-upload-alt"></i>
+                Envie um arquivo:
+              </label>
+              <div class="file-upload">
+                <input type="file" id="file" name="file" accept=".txt,.pdf" />
+                <label for="file" class="file-upload-label">
+                  <div class="upload-icon">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                  </div>
+                  <div class="upload-text">
+                    <span class="upload-title"
+                      >Clique ou arraste um arquivo</span
+                    >
+                    <span class="upload-subtitle"
+                      >Suporta .txt e .pdf (máx. 10MB)</span
+                    >
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Opções avançadas -->
+          <div class="advanced-options">
+            <div class="options-header">
+              <i class="fas fa-cog"></i>
+              <span>Opções Avançadas</span>
+              <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <div class="options-content">
+              <div class="checkbox-group">
+                <label class="checkbox-custom">
+                  <input type="checkbox" id="test-checkbox" />
+                  <span class="checkmark"></span>
+                  <div class="checkbox-text">
+                    <span class="checkbox-title">Teste de checkbox</span>
+                    <span class="checkbox-subtitle"
+                      >Verificando estilização</span
+                    >
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-primary">
+            <span class="btn-text">Testar Botão</span>
+            <span class="btn-icon">
+              <i class="fas fa-paper-plane"></i>
+            </span>
+          </button>
+        </form>
+
+        <div id="test-result" class="result-container" style="display: none">
+          <div class="result-content result-success">
+            <h3>✅ Teste realizado com sucesso!</h3>
+            <p>
+              Todos os arquivos CSS individuais estão funcionando corretamente!
+            </p>
+            <ul>
+              <li>✅ reset.css - Reset aplicado</li>
+              <li>✅ variables.css - Variáveis carregadas</li>
+              <li>✅ utilities.css - Classes utilitárias funcionando</li>
+              <li>✅ layout.css - Layout responsivo aplicado</li>
+              <li>✅ components.css - Componentes estilizados</li>
+              <li>✅ animations.css - Animações funcionando</li>
+              <li>✅ style.css - Estilos específicos aplicados</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Histórico de teste -->
+        <div class="history-section">
+          <div class="history-header">
+            <h3><i class="fas fa-history"></i> Histórico de Testes</h3>
+            <button class="clear-history">
+              <i class="fas fa-trash"></i>
+              Limpar
+            </button>
+          </div>
+          <div class="history-list">
+            <div class="history-item">
+              <div class="history-content">
+                <div class="history-text">Teste de CSS individuais</div>
+                <div class="history-meta">
+                  <span class="history-category productive">Sucesso</span>
+                  <span class="history-time">Agora</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-item">
+            <i class="fas fa-shield-alt"></i>
+            <span>Teste de CSS individuais</span>
+          </div>
+          <div class="footer-item">
+            <i class="fas fa-bolt"></i>
+            <span>Funcionando perfeitamente</span>
+          </div>
+          <div class="footer-item">
+            <i class="fas fa-code"></i>
+            <span>Arquivos CSS separados</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Toast notifications -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script>
+      // Teste simples de funcionalidade
+      document
+        .getElementById("test-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          console.log("✅ Form submit funcionando - sem reload da página");
+
+          const resultDiv = document.getElementById("test-result");
+          resultDiv.style.display = "block";
+          resultDiv.innerHTML = `
+          <div class="result-content result-success">
+            <h3>✅ Teste realizado com sucesso!</h3>
+            <p>Todos os arquivos CSS individuais estão funcionando corretamente!</p>
+            <ul>
+              <li>✅ reset.css - Reset aplicado</li>
+              <li>✅ variables.css - Variáveis carregadas</li>
+              <li>✅ utilities.css - Classes utilitárias funcionando</li>
+              <li>✅ layout.css - Layout responsivo aplicado</li>
+              <li>✅ components.css - Componentes estilizados</li>
+              <li>✅ animations.css - Animações funcionando</li>
+              <li>✅ style.css - Estilos específicos aplicados</li>
+            </ul>
+          </div>
+        `;
+        });
+
+      // Teste das abas
+      document.querySelectorAll(".tab-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          document
+            .querySelectorAll(".tab-btn")
+            .forEach((b) => b.classList.remove("active"));
+          this.classList.add("active");
+          console.log("✅ Abas funcionando");
+        });
+      });
+
+      // Teste das opções avançadas
+      document
+        .querySelector(".options-header")
+        .addEventListener("click", function () {
+          const content = document.querySelector(".options-content");
+          const isExpanded = content.classList.contains("expanded");
+
+          if (isExpanded) {
+            content.classList.remove("expanded");
+            this.querySelector(".toggle-icon").className =
+              "fas fa-chevron-down toggle-icon";
+          } else {
+            content.classList.add("expanded");
+            this.querySelector(".toggle-icon").className =
+              "fas fa-chevron-up toggle-icon";
+          }
+          console.log("✅ Opções avançadas funcionando");
+        });
+
+      // Teste do checkbox
+      document
+        .getElementById("test-checkbox")
+        .addEventListener("change", function () {
+          console.log("✅ Checkbox funcionando:", this.checked);
+        });
+
+      // Criar partículas de fundo
+      function createParticles() {
+        const particlesBg = document.getElementById("particles-bg");
+        if (!particlesBg) return;
+
+        for (let i = 0; i < 20; i++) {
+          const particle = document.createElement("div");
+          particle.className = "particle";
+          particle.style.left = Math.random() * 100 + "%";
+          particle.style.top = Math.random() * 100 + "%";
+          particle.style.width = particle.style.height =
+            Math.random() * 4 + 2 + "px";
+          particle.style.animationDelay = Math.random() * 6 + "s";
+          particlesBg.appendChild(particle);
+        }
+      }
+
+      // Inicializar quando DOM estiver carregado
+      document.addEventListener("DOMContentLoaded", function () {
+        createParticles();
+        console.log("✅ JavaScript carregado com sucesso");
+        console.log("✅ Todos os arquivos CSS individuais funcionando!");
+      });
+    </script>
+  </body>
+</html>

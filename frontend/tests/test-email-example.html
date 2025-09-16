@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teste - Email de Exemplo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Carrega CSS individuais na ordem correta -->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/utilities.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="header-icon">
+          <i class="fas fa-robot"></i>
+        </div>
+        <h1>Teste - Email de Exemplo</h1>
+        <p>Testando o email específico que está dando problema</p>
+      </header>
+
+      <main class="content">
+        <div class="form-group">
+          <label class="form-label">
+            <i class="fas fa-edit"></i>
+            Email de teste:
+          </label>
+          <div class="textarea-container">
+            <textarea
+              id="email-textarea"
+              class="form-textarea"
+              placeholder="Digite o email aqui..."
+              rows="8"
+            >
+Oi pessoal,
+
+Só passando para desejar um Feliz Natal e ótimas festas a todos! Que 2026 venha cheio de realizações 🙂
+
+Abraços,
+Carlos</textarea
+            >
+            <div class="char-counter">
+              <span id="char-count">0</span> caracteres
+            </div>
+          </div>
+        </div>
+
+        <!-- Botão de teste -->
+        <button type="submit" class="btn-primary" id="submit-btn">
+          <span class="btn-text">Classificar Email</span>
+          <span class="btn-icon">
+            <i class="fas fa-paper-plane"></i>
+          </span>
+        </button>
+
+        <!-- Resultado do teste -->
+        <div
+          id="test-result"
+          class="result-container"
+          style="display: none; margin-top: 2rem"
+        >
+          <div class="result-content">
+            <h3 id="result-title">Resultado da Classificação</h3>
+            <p id="result-message">Aguardando resultado...</p>
+          </div>
+        </div>
+
+        <!-- Instruções -->
+        <div
+          style="
+            margin-top: 3rem;
+            padding: 1.5rem;
+            background: var(--gray-50);
+            border-radius: var(--radius-lg);
+          "
+        >
+          <h3>📋 Instruções para o Teste:</h3>
+          <ol style="margin-top: 1rem; line-height: 1.6">
+            <li>
+              <strong>Abra o Console do Navegador</strong> (F12 → Console)
+            </li>
+            <li><strong>Clique no botão "Classificar Email"</strong> acima</li>
+            <li><strong>Observe os logs no console</strong> que mostrarão:</li>
+            <ul style="margin-top: 0.5rem; margin-left: 1rem">
+              <li>🤖 Resposta completa da API</li>
+              <li>📊 Categoria retornada</li>
+              <li>🎯 Prioridade retornada</li>
+              <li>📝 Texto enviado</li>
+              <li>📏 Tamanho do texto</li>
+              <li>⚙️ Processo de validação</li>
+            </ul>
+            <li><strong>Copie os logs</strong> e envie para análise</li>
+          </ol>
+        </div>
+      </main>
+    </div>
+
+    <script type="module">
+      import { DOMManager } from "./js/dom.js";
+      import { AppState } from "./js/state.js";
+      import { UIManager } from "./js/ui.js";
+      import { HistoryManager } from "./js/history.js";
+      import { APIManager } from "./js/api.js";
+      import { FileHandler } from "./js/file-handler.js";
+      import { TabManager } from "./js/tabs.js";
+      import { Utils } from "./js/utils.js";
+      import { TOAST_TYPES } from "./js/config.js";
+
+      // Inicializar componentes
+      const dom = new DOMManager();
+      const state = new AppState();
+      const ui = new UIManager(dom, state);
+      const history = new HistoryManager(dom);
+      const api = new APIManager();
+      const fileHandler = new FileHandler(dom, ui);
+      const tabManager = new TabManager(dom, fileHandler);
+
+      // Atualizar contador de caracteres
+      function updateCharCount() {
+        const textarea = document.getElementById("email-textarea");
+        const charCount = document.getElementById("char-count");
+        const count = textarea.value.length;
+        charCount.textContent = count;
+
+        // Colorir baseado no tamanho
+        charCount.className = "char-counter";
+        if (count < 10) {
+          charCount.classList.add("text-red-600");
+        } else if (count < 50) {
+          charCount.classList.add("text-yellow-500");
+        } else {
+          charCount.classList.add("text-green-600");
+        }
+      }
+
+      // Event listener para o botão
+      document
+        .getElementById("submit-btn")
+        .addEventListener("click", async function (e) {
+          e.preventDefault();
+
+          const textContent = document
+            .getElementById("email-textarea")
+            .value.trim();
+          console.log("🚀 Iniciando classificação do email...");
+          console.log("📧 Email completo:", textContent);
+          console.log("📏 Tamanho:", textContent.length, "caracteres");
+
+          // Mostrar loading
+          ui.showLoading();
+
+          try {
+            // Validação
+            console.log("🔍 Iniciando validação...");
+            const validation = Utils.validateEmail(textContent, null);
+            console.log("✅ Resultado da validação:", validation);
+
+            if (!validation.valid) {
+              console.log("❌ Validação falhou:", validation.message);
+              ui.showError(validation.message);
+              return;
+            }
+
+            console.log("✅ Validação passou, prosseguindo...");
+
+            // Preparar dados
+            const formData = api.createFormData(
+              textContent,
+              null,
+              false,
+              false
+            );
+            console.log("📦 FormData preparado:", formData);
+
+            // Fazer requisição
+            console.log("🌐 Enviando requisição para API...");
+            const data = await api.classifyEmail(formData);
+
+            // Log detalhado da resposta da API
+            console.log("🤖 Resposta completa da API:", data);
+            console.log("📊 Categoria retornada:", data.categoria);
+            console.log("🎯 Prioridade retornada:", data.prioridade);
+            console.log("📝 Texto enviado:", textContent);
+            console.log(
+              "📏 Tamanho do texto:",
+              textContent ? textContent.length : "N/A"
+            );
+
+            // Processar resultado
+            const resultDiv = document.getElementById("test-result");
+            const resultTitle = document.getElementById("result-title");
+            const resultMessage = document.getElementById("result-message");
+
+            resultDiv.style.display = "block";
+
+            if (data.error) {
+              console.log("❌ Erro detectado:", data.error);
+              resultTitle.textContent = "❌ Erro";
+              resultMessage.textContent = data.error;
+              resultDiv.querySelector(".result-content").className =
+                "result-content result-error";
+            } else if (
+              data.categoria === null ||
+              data.categoria === undefined ||
+              data.categoria === ""
+            ) {
+              console.log("⚠️ Categoria nula/indefinida detectada");
+              console.log("📋 Dados recebidos:", JSON.stringify(data, null, 2));
+              resultTitle.textContent = "⚠️ Classificação Inconclusiva";
+              resultMessage.textContent =
+                "Não foi possível classificar este email com confiança suficiente. Verifique os logs no console para mais detalhes.";
+              resultDiv.querySelector(".result-content").className =
+                "result-content result-warning";
+            } else {
+              console.log("✅ Classificação bem-sucedida!");
+              console.log("📊 Categoria final:", data.categoria);
+              console.log("🎯 Prioridade final:", data.prioridade);
+
+              resultTitle.textContent = `✅ Classificado como: ${data.categoria}`;
+              resultMessage.textContent = `Prioridade: ${data.prioridade}`;
+              resultDiv.querySelector(".result-content").className =
+                "result-content result-success";
+            }
+          } catch (error) {
+            console.error("❌ Erro capturado:", error);
+            console.error("📋 Detalhes do erro:", {
+              name: error.name,
+              message: error.message,
+              stack: error.stack,
+            });
+
+            const resultDiv = document.getElementById("test-result");
+            const resultTitle = document.getElementById("result-title");
+            const resultMessage = document.getElementById("result-message");
+
+            resultDiv.style.display = "block";
+            resultTitle.textContent = "❌ Erro";
+            resultMessage.textContent =
+              error.message || "Erro inesperado. Verifique os logs no console.";
+            resultDiv.querySelector(".result-content").className =
+              "result-content result-error";
+          } finally {
+            ui.resetButton();
+          }
+        });
+
+      // Inicializar
+      updateCharCount();
+      document
+        .getElementById("email-textarea")
+        .addEventListener("input", updateCharCount);
+
+      console.log("✅ Teste de email carregado - Pronto para testar!");
+    </script>
+  </body>
+</html>

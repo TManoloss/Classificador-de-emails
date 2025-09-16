@@ -1,0 +1,513 @@
+/**
+ * Estilos específicos do aplicativo
+ * Estes estilos têm precedência sobre os estilos dos módulos
+ * Use com moderação e apenas para estilos específicos que não se encaixam nos módulos
+ */
+
+/* Estilo temporário enquanto as fontes carregam */
+body.font-loading {
+  visibility: hidden;
+}
+
+body.fonts-loaded {
+  visibility: visible;
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Indicador de carregamento */
+.loading-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.loading-indicator.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--gray-200);
+  border-top: 4px solid var(--primary-500);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Contador de caracteres */
+.char-counter {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-size: 0.8rem;
+  color: var(--gray-500);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2px 6px;
+  border-radius: 4px;
+  z-index: 10;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  background: var(--blue-50);
+  border: 1px solid var(--blue-500);
+  border-radius: var(--radius-lg);
+  margin-top: var(--spacing-3);
+  transition: all var(--transition-fast);
+}
+
+.file-info i {
+  color: var(--blue-500);
+  font-size: var(--font-size-lg);
+}
+
+.remove-file {
+  background: var(--red-500);
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-fast);
+}
+
+.remove-file:hover {
+  background: var(--red-600);
+}
+
+.options-header.expanded .toggle-icon {
+  transform: rotate(180deg);
+}
+
+.options-content.expanded {
+  max-height: 200px;
+  padding: var(--spacing-5);
+  transition: all var(--transition-normal);
+}
+
+.history-meta {
+  display: flex;
+  gap: var(--spacing-3);
+  align-items: center;
+  font-size: var(--font-size-xs);
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: var(--spacing-1);
+  flex-wrap: wrap;
+}
+
+.history-priority {
+  font-weight: var(--font-weight-medium);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 0.75em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.history-result.productive {
+  color: var(--green-500);
+}
+
+.history-result.unproductive {
+  color: var(--yellow-500);
+}
+
+.particles-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Barra de progresso superior */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--primary-gradient);
+  z-index: 1000;
+  width: 0%;
+  transition: width var(--transition-normal);
+  box-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
+}
+
+.header-icon {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-6);
+  color: rgba(255, 255, 255, 0.95);
+  animation: pulse 2s ease-in-out infinite;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stats-container {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-8);
+  margin-top: var(--spacing-8);
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: var(--spacing-4) var(--spacing-5);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(10px);
+  min-width: 120px;
+  transition: all var(--transition-fast);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-item:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-item i {
+  font-size: 1.75rem;
+  margin-bottom: var(--spacing-2);
+  display: block;
+  color: var(--white);
+  opacity: 0.9;
+}
+
+.stat-number {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-1);
+  color: var(--white);
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: var(--font-size-sm);
+  opacity: 0.9;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Classes de animação */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideInUp 0.5s ease-out forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Atrasos de animação */
+.delay-100 {
+  animation-delay: 0.1s;
+}
+.delay-200 {
+  animation-delay: 0.2s;
+}
+.delay-300 {
+  animation-delay: 0.3s;
+}
+.delay-400 {
+  animation-delay: 0.4s;
+}
+.delay-500 {
+  animation-delay: 0.5s;
+}
+
+/* Melhorias de acessibilidade */
+:focus-visible {
+  outline: 3px solid var(--primary-500);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Melhoria de legibilidade para modo de alto contraste */
+@media (forced-colors: active) {
+  :root {
+    --primary-500: #0000ff;
+    --primary-600: #0000cc;
+    --primary-700: #0000aa;
+  }
+
+  .btn {
+    border: 2px solid transparent;
+    border-color: ButtonText;
+  }
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .stats-container {
+    gap: var(--spacing-4);
+    margin-top: var(--spacing-6);
+  }
+
+  .stat-item {
+    min-width: calc(50% - var(--spacing-4));
+    padding: var(--spacing-3);
+  }
+
+  .stat-number {
+    font-size: 1.5rem;
+  }
+
+  .header-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-item {
+    min-width: 100%;
+  }
+
+  .header-icon {
+    font-size: 2.2rem;
+  }
+
+  .stat-number {
+    font-size: 1.4rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+  }
+
+  /* Melhorias para dispositivos móveis */
+  @supports (-webkit-touch-callout: none) {
+    /* Estilos específicos para iOS */
+    input,
+    textarea,
+    select {
+      font-size: 16px; /* Evita zoom em iOS ao focar em campos de formulário */
+    }
+  }
+
+  /* Ajuste para evitar que o teclado virtual cubra os campos de entrada */
+  .input-tabs {
+    padding-bottom: env(safe-area-inset-bottom, 20px);
+  }
+
+  /* Melhorias para navegação por toque */
+  button,
+  .btn,
+  [role="button"] {
+    min-height: 44px; /* Tamanho mínimo recomendado para toque */
+    min-width: 44px;
+  }
+
+  /* Ajuste para elementos interativos em telas pequenas */
+  .form-input,
+  .form-textarea,
+  .form-select {
+    padding: 12px;
+    font-size: 16px; /* Melhor legibilidade em dispositivos móveis */
+  }
+}
+
+/* Estilos para impressão */
+@media print {
+  /* Ocultar elementos não essenciais */
+  .no-print,
+  .header,
+  .footer,
+  .progress-bar,
+  .particles-bg,
+  button,
+  .btn,
+  .input-tabs,
+  .tab-button:not(.active) {
+    display: none !important;
+  }
+
+  /* Melhorar legibilidade do texto */
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+    line-height: 1.3;
+  }
+
+  /* Garantir que o conteúdo impresso ocupe toda a largura */
+  .container {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+  }
+
+  /* Melhorar a aparência de links */
+  a {
+    color: #000 !important;
+    text-decoration: underline !important;
+  }
+
+  /* Adicionar URLs após os links */
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    font-weight: normal;
+  }
+
+  /* Evitar quebras de página dentro de elementos importantes */
+  .card,
+  .result-item,
+  .history-item {
+    page-break-inside: avoid;
+  }
+
+  /* Adicionar margens para impressão */
+  @page {
+    margin: 2cm;
+  }
+
+  /* Melhorar a aparência de códigos e blocos */
+  pre,
+  code {
+    background: #f5f5f5 !important;
+    border: 1px solid #ddd !important;
+    page-break-inside: avoid;
+  }
+
+  /* Garantir que as imagens não ultrapassem a largura da página */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Melhorar legibilidade de tabelas */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1em;
+  }
+
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+}
+/* Adicionar classes que estavam faltando */
+.history-meta {
+  display: flex;
+  gap: var(--spacing-3);
+  align-items: center;
+  font-size: var(--font-size-xs);
+  color: var(--gray-500);
+  margin-top: var(--spacing-1);
+  flex-wrap: wrap;
+}
+
+.history-priority {
+  font-weight: var(--font-weight-medium);
+  font-size: 0.75rem;
+}
+
+body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: #333 !important;
+}

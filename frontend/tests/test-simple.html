@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teste de Estilos - AutoU</title>
+  
+  <!-- Carrega as fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Carrega os estilos na ordem correta -->
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/utilities.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="style.css" />
+  
+  <style>
+    /* Estilos de teste */
+    body {
+      padding: 20px;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .test-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .test-box {
+      margin: 20px 0;
+      padding: 20px;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+    }
+    
+    .test-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #1f2937;
+    }
+    
+    .test-content {
+      margin-top: 10px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+    
+    .btn-primary {
+      background: #4f46e5;
+      color: white;
+      border: 1px solid #4338ca;
+    }
+    
+    .btn-primary:hover {
+      background: #4338ca;
+    }
+    
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 500;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+    
+    .badge-success {
+      background: #dcfce7;
+      color: #166534;
+    }
+  </style>
+</head>
+<body>
+  <div class="test-container">
+    <h1>Teste de Estilos - AutoU</h1>
+    
+    <div class="test-box">
+      <div class="test-title">1. Tipografia</div>
+      <div class="test-content">
+        <h1>Cabeçalho 1</h1>
+        <h2>Cabeçalho 2</h2>
+        <h3>Cabeçalho 3</h3>
+        <p>Parágrafo normal com algum texto de exemplo para testar a tipografia e o espaçamento entre linhas.</p>
+        <p><strong>Texto em negrito</strong> e <em>texto em itálico</em>.</p>
+      </div>
+    </div>
+    
+    <div class="test-box">
+      <div class="test-title">2. Cores</div>
+      <div class="test-content">
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px;">
+          <div style="width: 60px; height: 60px; background: var(--primary-500); border-radius: 6px;"></div>
+          <div style="width: 60px; height: 60px; background: var(--success-color); border-radius: 6px;"></div>
+          <div style="width: 60px; height: 60px; background: var(--warning-color); border-radius: 6px;"></div>
+          <div style="width: 60px; height: 60px; background: var(--error-color); border-radius: 6px;"></div>
+        </div>
+        <div>Cor primária: var(--primary-500)</div>
+        <div>Cor de sucesso: var(--success-color)</div>
+        <div>Cor de aviso: var(--warning-color)</div>
+        <div>Cor de erro: var(--error-color)</div>
+      </div>
+    </div>
+    
+    <div class="test-box">
+      <div class="test-title">3. Botões</div>
+      <div class="test-content">
+        <button class="btn btn-primary">Botão Primário</button>
+        <button class="btn" style="background: #e5e7eb;">Botão Secundário</button>
+        <button class="btn" style="background: #ef4444; color: white;">Botão de Erro</button>
+      </div>
+    </div>
+    
+    <div class="test-box">
+      <div class="test-title">4. Badges</div>
+      <div class="test-content">
+        <span class="badge badge-success">Sucesso</span>
+        <span class="badge" style="background: #fef3c7; color: #92400e;">Aviso</span>
+        <span class="badge" style="background: #fee2e2; color: #b91c1c;">Erro</span>
+      </div>
+    </div>
+    
+    <div class="test-box">
+      <div class="test-title">5. Formulário</div>
+      <div class="test-content">
+        <form style="max-width: 400px;">
+          <div style="margin-bottom: 15px;">
+            <label style="display: block; margin-bottom: 5px; font-weight: 500;">Nome</label>
+            <input type="text" style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 4px;">
+          </div>
+          <div style="margin-bottom: 15px;">
+            <label style="display: block; margin-bottom: 5px; font-weight: 500;">E-mail</label>
+            <input type="email" style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 4px;">
+          </div>
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+      </div>
+    </div>
+    
+    <div class="test-box">
+      <div class="test-title">6. Verificação de Estilos</div>
+      <div class="test-content">
+        <div id="style-check">
+          <p>Verificando estilos carregados...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // Verifica se as variáveis CSS estão disponíveis
+    function checkCssVariables() {
+      const root = getComputedStyle(document.documentElement);
+      const variables = [
+        '--primary-500',
+        '--success-color',
+        '--warning-color',
+        '--error-color',
+        '--font-sans',
+        '--spacing-4',
+        '--radius-md'
+      ];
+      
+      const results = [];
+      
+      variables.forEach(variable => {
+        try {
+          const value = root.getPropertyValue(variable).trim();
+          results.push({
+            variable,
+            status: value ? '✅ Carregado' : '❌ Não definido',
+            value: value || 'N/A'
+          });
+        } catch (e) {
+          results.push({
+            variable,
+            status: '❌ Erro',
+            value: 'Erro ao acessar'
+          });
+        }
+      });
+      
+      return results;
+    }
+    
+    // Verifica se os arquivos CSS foram carregados
+    function checkCssFiles() {
+      const cssFiles = Array.from(document.styleSheets);
+      const loadedFiles = [];
+      
+      cssFiles.forEach(sheet => {
+        try {
+          if (sheet.href) {
+            loadedFiles.push({
+              file: sheet.href.split('/').pop(),
+              status: '✅ Carregado'
+            });
+          }
+        } catch (e) {
+          // Ignora erros de CORS
+        }
+      });
+      
+      return loadedFiles;
+    }
+    
+    // Exibe os resultados
+    function displayResults() {
+      const styleCheck = document.getElementById('style-check');
+      const variables = checkCssVariables();
+      const files = checkCssFiles();
+      
+      let html = '<h3>Variáveis CSS:</h3><ul>';
+      
+      variables.forEach(item => {
+        html += `<li><strong>${item.variable}:</strong> ${item.status} (${item.value})</li>`;
+      });
+      
+      html += '</ul><h3>Arquivos CSS Carregados:</h3><ul>';
+      
+      files.forEach(file => {
+        html += `<li>${file.file}: ${file.status}</li>`;
+      });
+      
+      styleCheck.innerHTML = html;
+    }
+    
+    // Executa a verificação quando a página carregar
+    window.addEventListener('load', displayResults);
+  </script>
+</body>
+</html>
