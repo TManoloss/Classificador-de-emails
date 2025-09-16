@@ -11,7 +11,7 @@ const RENDER_BACKEND = "https://classificador-de-emails-hxkx.onrender.com";
 
 const apiBaseUrl = isProduction ? RENDER_BACKEND : "http://127.0.0.1:8000";
 
-export const APP_CONFIG = {
+export const CONFIG = {
   API_URL: `${apiBaseUrl}/classify`, // certifique-se que seu backend usa /classify
   MAX_FILE_SIZE: 10 * 1024 * 1024,
   MAX_CHARS: 5000,
@@ -23,6 +23,8 @@ export const APP_CONFIG = {
     HISTORY: "emailHistory",
   },
 };
+
+export const APP_CONFIG = CONFIG;
 
 export const PRIORITY_CONFIG = {
   Alta: { icon: "🔴", color: "#ff4444", label: "Alta Prioridade" },
