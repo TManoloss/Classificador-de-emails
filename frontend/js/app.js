@@ -10,7 +10,11 @@ import { APIManager } from "./api.js";
 import { FileHandler } from "./file-handler.js";
 import { TabManager } from "./tabs.js";
 import { Utils } from "./utils.js";
-import { TOAST_TYPES } from "./config.js";
+import { APP_CONFIG, TOAST_TYPES } from "./config.js";
+
+const API_URL = (window.APP_CONFIG && window.APP_CONFIG.API_URL) || "/classify";
+// ou se você quer ver debug:
+console.log("Using API_URL =", API_URL);
 
 class EmailClassifierApp {
   constructor() {
@@ -18,7 +22,7 @@ class EmailClassifierApp {
     this.state = new AppState();
     this.ui = new UIManager(this.dom, this.state);
     this.history = new HistoryManager(this.dom);
-    this.api = new APIManager();
+    this.api = new APIManager(API_URL);
     this.fileHandler = new FileHandler(this.dom, this.ui);
     this.tabManager = new TabManager(this.dom, this.fileHandler);
 
